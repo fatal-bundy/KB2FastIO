@@ -157,6 +157,7 @@
     <ClInclude Include="vk.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="analogHandler.cpp" />
     <ClCompile Include="btnHandler.cpp" />
     <ClCompile Include="Coins.cpp" />
     <ClCompile Include="dllmain.cpp">

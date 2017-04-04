@@ -1,3 +1,9 @@
+/*
+Coin handler. 
+Need to implement a counter and decrementer. 
+Need to research a method to check or key press constantly rather than on call of function. this work as the command is called often
+*/
+
 #include "stdafx.h"
 #include "common.h"
 #include "vk.h"

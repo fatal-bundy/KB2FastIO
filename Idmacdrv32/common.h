@@ -21,3 +21,6 @@ int readCoinsP1();
 int readCoinsP2();
 int readCoinsP3();
 int readCoinsP4();
+
+int analog1();
+int analog2();

@@ -73,7 +73,7 @@ __declspec (dllexport) int iDmacDrvRegisterRead(int a1, DWORD a2, LPVOID a3, LPV
 
 	case FIO_INPUT_ST_0:
 		// controls sound level in darius 0 - 255
-		*(DWORD *)a3 = 255;
+		*(DWORD *)a3 = analog1();
 		return 0;
 
 	case FIO_NODE_1_INPUT:
@@ -81,7 +81,7 @@ __declspec (dllexport) int iDmacDrvRegisterRead(int a1, DWORD a2, LPVOID a3, LPV
 		return 0;
 
 	case FIO_INPUT_ST_1:
-		*(DWORD *)a3 = 100;
+		*(DWORD *)a3 = analog2();
 		return 0;
 
 	case FIO_NODE_0_COINSLOT_1:
@@ -99,7 +99,7 @@ __declspec (dllexport) int iDmacDrvRegisterRead(int a1, DWORD a2, LPVOID a3, LPV
 	case FIO_NODE_1_COINSLOT_2:
 		*(DWORD *)a3 = readCoinsP4();
 		return 0;
-
+// unknown commands
 	case 0x4100:
 		*(DWORD *)a3 = 0;
 		return 0;
