@@ -1,0 +1,37 @@
+#pragma once
+
+#define DMAC_ID		   0x400
+#define FIO_NODE_0_STATUS   0x4000
+#define FIO_NODE_1_STATUS   0x4004
+#define FIO_NODE_0_INPUT    0x4120
+#define FIO_INPUT_ST_0 0x4124
+#define FIO_NODE_1_INPUT    0x41A0
+#define FIO_INPUT_ST_1 0x41A4
+#define FIO_NODE_0_COINSLOT_1   0x4140
+#define FIO_NODE_0_COINSLOT_2   0x4144
+#define FIO_NODE_1_COINSLOT_1   0x41C0
+#define FIO_NODE_1_COINSLOT_2   0x41C4
+
+/*
+
+Commands that need to be investigated
+
+0x4150
+0x4154
+0x4158
+0x415C
+0x41D0
+0x41D4
+0x41D8
+0x41DC
+0x4128
+0x412C
+0x41A8
+0x41AC
+0x4100
+0x4104
+0x4180
+0x4184
+
+
+*/

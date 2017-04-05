@@ -72,7 +72,6 @@ __declspec (dllexport) int iDmacDrvRegisterRead(int a1, DWORD a2, LPVOID a3, LPV
 		return 0;
 
 	case FIO_INPUT_ST_0:
-		// controls sound level in darius 0 - 255
 		*(DWORD *)a3 = analog1();
 		return 0;
 
