@@ -75,7 +75,7 @@ __declspec (dllexport) int iDmacDrvRegisterRead(int a1, DWORD a2, LPVOID ret_poi
 		return 0;
 
 	case FIO_NODE_0_INPUT:
-		*(DWORD *)ret_pointer = 0;//btnHandleNode1();
+		*(DWORD *)ret_pointer = btnHandleNode1();
 		return 0;
 
 	case FIO_INPUT_ST_0:
@@ -83,7 +83,7 @@ __declspec (dllexport) int iDmacDrvRegisterRead(int a1, DWORD a2, LPVOID ret_poi
 		return 0;
 
 	case FIO_NODE_1_INPUT:
-		*(DWORD *)ret_pointer = 0;//btnHandleNode2();
+		*(DWORD *)ret_pointer = btnHandleNode2();
 		return 0;
 
 	case FIO_INPUT_ST_1:
