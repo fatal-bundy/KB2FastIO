@@ -8,10 +8,20 @@ DWORD btnHandleNode1()
 {
 DWORD val1 = 0;
 DWORD val2 = 0;
-if (GetAsyncKeyState(VK_F1) & 0x8000)
+	if (GetAsyncKeyState(VK_F1) & 0x8000)
 	{
 		//OutputDebugStr("P1 SERVICE");
 		val1 |= 1 << 2;
+	}
+	if (GetAsyncKeyState(VK_KEY_I) & 0x8000)
+	{
+		//OutputDebugStr("P1 SERVICE");
+		val1 |= 1 << 1;
+	}
+	if (GetAsyncKeyState(VK_KEY_P) & 0x8000)
+	{
+		//OutputDebugStr("P1 SERVICE");
+		val1 |= 1 << 3;
 	}
 
 	if (GetAsyncKeyState(VK_F2) & 0x8000)

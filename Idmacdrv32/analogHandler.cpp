@@ -8,7 +8,7 @@ Darius uses one channel for sound volume.
 
 int analog1()
 {
-	return 255;
+	return 0;
 }
 
 int analog2()
