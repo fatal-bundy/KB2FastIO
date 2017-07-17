@@ -25,25 +25,44 @@ __declspec (dllexport) DWORD iDmacDrvClose(int a1, LPVOID lp)
 
 __declspec (dllexport) int iDmacDrvDmaRead(int a1, LPVOID lp, UINT_PTR ucb, LPVOID a4)
 {
-
+#ifdef DEBUG
+	char outString[256];
+	sprintf(outString, "\nUnknown DmaRead command\n Command: %X\n", (int)lp);
+	OutputDebugStringA(outString);
+#endif
 	return 0;
 
 }
 
 __declspec (dllexport) int iDmacDrvDmaWrite(int a1, void *lp, UINT_PTR ucb, LPVOID a4)
 {
-
+#ifdef DEBUG
+	char outString[256];
+	sprintf(outString, "\nUnknown DmaWrite command\n Command: %X\nData Written:%X\n", (int)lp, (int)a4);
+	OutputDebugStringA(outString);
+#endif
 	return 0;
 
 }
 
-__declspec (dllexport) int iDmacDrvRegisterWrite(int a1, DWORD in_pointer, int a3, LPVOID lp)
+__declspec (dllexport) int iDmacDrvRegisterWrite(int a1, DWORD command, int data2write, LPVOID lp)
 {
+	switch (command)
+	{
+	case FIO_GEN_OUT1:
+	{
+		output1(data2write);
+		return 0;
+	}
+
+	default:
+		break;
+	}
 
 #ifdef DEBUG
-	char outString[256];
-	sprintf(outString, "Unknown RegWrite command\n Command: %X\nData Written:%X", in_pointer,lp);
-	OutputDebugStringA(outString);
+		char outString[256];
+		sprintf(outString, "\nUnknown RegWrite command\n Command: %X\nData Written:%X\n", command, data2write);
+		OutputDebugStringA(outString);
 #endif
 	return 0;
 
@@ -75,7 +94,7 @@ __declspec (dllexport) int iDmacDrvRegisterRead(int a1, DWORD a2, LPVOID ret_poi
 		return 0;
 
 	case FIO_NODE_0_INPUT:
-		*(DWORD *)ret_pointer = btnHandleNode1();
+		*(DWORD *)ret_pointer = 0;//btnHandleNode1();
 		return 0;
 
 	case FIO_INPUT_ST_0:
@@ -83,7 +102,7 @@ __declspec (dllexport) int iDmacDrvRegisterRead(int a1, DWORD a2, LPVOID ret_poi
 		return 0;
 
 	case FIO_NODE_1_INPUT:
-		*(DWORD *)ret_pointer = btnHandleNode2();
+		*(DWORD *)ret_pointer = 0;// btnHandleNode2();
 		return 0;
 
 	case FIO_INPUT_ST_1:
@@ -122,7 +141,7 @@ __declspec (dllexport) int iDmacDrvRegisterRead(int a1, DWORD a2, LPVOID ret_poi
 
 	/* Commands coming from Grooove Coaster 3. need a Fast IO Hub to log for details*/
 	case 0x4150:
-		*(DWORD *)ret_pointer = 0x1823c;
+		*(DWORD *)ret_pointer = FIO_BOARDID_NOG3;
 		return 0;
 	/*case 0x4154:
 
@@ -138,6 +157,7 @@ __declspec (dllexport) int iDmacDrvRegisterRead(int a1, DWORD a2, LPVOID ret_poi
 
 	case 0x41DC:
 	*/
+
 	case 0x4128:
 		*(DWORD *)ret_pointer = 50;
 		return 0;
@@ -156,7 +176,7 @@ __declspec (dllexport) int iDmacDrvRegisterRead(int a1, DWORD a2, LPVOID ret_poi
 		//*(DWORD *)ret_pointer = 0;
 #ifdef DEBUG
 		char outString[256];
-		sprintf(outString, "Unknown RegRead command, Command: %X",a2);
+		sprintf(outString, "\nUnknown RegRead command, Command: %X\n",a2);
 		OutputDebugStringA(outString);
 #endif
 		return 0;
@@ -168,7 +188,7 @@ __declspec (dllexport) int iDmacDrvRegisterBufferRead(int a1, DWORD BytesReturne
 {
 #ifdef DEBUG
 	char outString[256];
-	sprintf(outString, "Unknown RegBufferRead command, Command: %X", BytesReturned);
+	sprintf(outString, "\nUnknown RegBufferRead command, Command: %X\n", BytesReturned);
 	OutputDebugStringA(outString);
 #endif
 	//*(DWORD *)a5 = 0;
@@ -178,7 +198,7 @@ __declspec (dllexport) int iDmacDrvRegisterBufferWrite(int a1, DWORD BytesReturn
 {
 #ifdef DEBUG
 	char outString[256];
-	sprintf(outString, "Unknown RegBufferWrite command, Command: %X", BytesReturned);
+	sprintf(outString, "\nUnknown RegBufferWrite command, Command: %X\n Data:%X", BytesReturned,a1);
 	OutputDebugStringA(outString);
 #endif
 	//*(DWORD *)a5 = 0;
