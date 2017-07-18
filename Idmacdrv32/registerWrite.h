@@ -1,2 +1,3 @@
 #pragma once
-#define FIO_GEN_OUT1 0x4100
+#define NODE0_RESET 0x4000
+#define NODE1_RESET 0x4004

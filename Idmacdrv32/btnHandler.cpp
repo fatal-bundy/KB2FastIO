@@ -1,8 +1,7 @@
 #include "stdafx.h"
 #include "common.h"
 #include "vk.h"
-
-
+#include "btnHandler.h"
 
 DWORD btnHandleNode1()
 {
@@ -47,8 +46,6 @@ DWORD val2 = 0;
 		//OutputDebugStr("TEST Node 1");
 		val1 |= 1 << 6;
 	}
-	//coin_thing_1 = (GetAsyncKeyState(0x71) & 0x8000) ? 1 : 0;
-
 
 	if (GetAsyncKeyState(VK_UP) & 0x8000)
 
@@ -205,8 +202,6 @@ DWORD btnHandleNode2()
 		//OutputDebugStr("Node 2 TEST");
 		val3 |= 1 << 6;
 	}
-	//coin_thing_1 = (GetAsyncKeyState(0x71) & 0x8000) ? 1 : 0;
-
 
 	if (GetAsyncKeyState(VK_KEY_O) & 0x8000)
 
