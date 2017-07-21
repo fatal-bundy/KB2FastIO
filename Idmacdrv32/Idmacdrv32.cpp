@@ -6,14 +6,14 @@
 #include <stdio.h>
 #include "config.h"
 
+//#define DUALNODE
+
 
 __declspec (dllexport) DWORD iDmacDrvOpen(int a1, LPVOID lp, LPVOID a3)
 {
-
 	*(DWORD *)lp = 1;
 	*(DWORD *)a3 = -1;
 	return 0;
-
 }
 
 __declspec (dllexport) DWORD iDmacDrvClose(int a1, LPVOID lp)
@@ -45,17 +45,51 @@ __declspec (dllexport) int iDmacDrvRegisterWrite(int a1, DWORD command, int data
 	switch (command)
 	{
 	case NODE0_RESET:
-#ifdef DEBUG
-		sprintf(outString, "\nNode0 Device sent\nData Written: %X\n", data);
-		OutputDebugStringA(outString);
-#endif
 		return 0;
+
 	case NODE1_RESET:
-#ifdef DEBUG
-		sprintf(outString, "\nNode1 Device sent\nData Written: %X\n", data);
-		OutputDebugStringA(outString);
-#endif
 		return 0;
+
+	case FIO_NODE0P1_COINCOUNTER:
+		decCoinP1();
+		return 0;
+
+	case FIO_NODE0P2_COINCOUNTER:
+		decCoinP2();
+		return 0;
+
+	case FIO_NODE1P1_COINCOUNTER:
+		decCoinP3();
+		return 0;
+
+	case FIO_NODE1P2_COINCOUNTER:
+		decCoinP4();
+		return 0;
+
+	case FIO_NODE0_GPIOBANK1:
+		return node0GPIOBank1();
+
+	case FIO_NODE0_GPIOBANK2:
+		return node0GPIOBank2();
+
+	case FIO_NODE0_GPIOBANK3:
+		return node0GPIOBank3();
+
+	case FIO_NODE0_GPIOBANK4:
+		return node0GPIOBank4();
+
+	case FIO_NODE1_GPIOBANK1:
+		return node1GPIOBank1();
+
+	case FIO_NODE1_GPIOBANK2:
+		return node1GPIOBank2();
+
+	case FIO_NODE1_GPIOBANK3:
+		return node1GPIOBank3();
+
+	case FIO_NODE1_GPIOBANK4:
+		return node1GPIOBank4();
+		
 	default:
 #ifdef DEBUG
 

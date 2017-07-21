@@ -79,6 +79,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <OutDir>E:\Taito\TTX2\Nesica\unpacked\Ultra StreetFighter IV[303200][1.05][Patched]\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -150,12 +151,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Text Include="..\ReadMe.txt" />
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="analogHandler.h" />
     <ClInclude Include="btnHandler.h" />
     <ClInclude Include="common.h" />
+    <ClInclude Include="config.h" />
     <ClInclude Include="output.h" />
     <ClInclude Include="registerRead.h" />
     <ClInclude Include="registerWrite.h" />
@@ -181,6 +184,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="GPIOHandler.cpp" />
     <ClCompile Include="Idmacdrv32.cpp" />
     <ClCompile Include="output.cpp" />
     <ClCompile Include="stdafx.cpp">
