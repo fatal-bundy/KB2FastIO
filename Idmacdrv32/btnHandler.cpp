@@ -12,6 +12,7 @@ DWORD val2 = 0;
 		//OutputDebugStr("P1 SERVICE");
 		val1 |= 1 << 2;
 	}
+	
 	if (GetAsyncKeyState(VK_KEY_I) & 0x8000)
 	{
 		//OutputDebugStr("P1 SERVICE");
@@ -34,19 +35,19 @@ DWORD val2 = 0;
 		//OutputDebugStr("P1 START");
 		val1 |= 1 << 4;
 	}
-
+	
 	if (GetAsyncKeyState(VK_KEY_2) & 0x8000)
 	{
 		//OutputDebugStr("P2 START");
 		val2 |= 1 << 5;
 	}
-
+	
 	if (GetAsyncKeyState(VK_KEY_T) & 0x8000)
 	{
 		//OutputDebugStr("TEST Node 1");
 		val1 |= 1 << 6;
 	}
-
+	
 	if (GetAsyncKeyState(VK_UP) & 0x8000)
 
 	{
